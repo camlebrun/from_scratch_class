@@ -67,6 +67,7 @@ result = """
 with st.expander("Result"):
     st.code(result, language="json")
 st.write("Requête 2: Affiche les employeurs des comptes")
+
 code_2 = """"
 GET accounts/_search
 { "size": 0, 
@@ -144,6 +145,7 @@ result_2 = """
     }
   }
 }"""
+st.code(code_2, language="json")
 with st.expander("Result"):
     st.code(result_2, language="json")
 st.write("Requête 3: Affiche les balances des comptes par tranche de 100")
@@ -165,7 +167,7 @@ GET accounts/_search
 }
 
 """
-
+st.code(code_3, language="json")
 result_3 = """
 {
   "took": 6,

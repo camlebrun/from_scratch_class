@@ -119,6 +119,7 @@ GET accounts/_search
   }
 }
 """
+st.code(code_3, language="json")
 with st.expander("Result"):
     st.markdown("Résultat afficher")
     st.code(result_3, language="json")
