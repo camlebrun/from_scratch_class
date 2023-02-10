@@ -6,9 +6,9 @@ st.write("Création d'un index et modification de l'index")
 st.write("L'index créee par ELK n'est pas adapter pour notre projet, il faut donc le modifier")
 st.write("**On va créer un index temporaire pour y injecter des données puis on va créer un index définitif avec les bon mapping. Qui servira à la suite du projet**")
 code = """
-GET account_temp <== Voir l'index fourni par ELK
+GET account_temp 
 
-PUT  account_temp <== Création d'un index temporaire
+PUT  account_temp  
 {
   "mappings": {
     "properties": {
@@ -25,7 +25,7 @@ PUT  account_temp <== Création d'un index temporaire
   }
 }
 
-POST _reindex <== On copie les données de l'index temporaire vers l'index définitif
+POST _reindex 
 {
   "source": {
     "index": "account_temp"
@@ -34,11 +34,10 @@ POST _reindex <== On copie les données de l'index temporaire vers l'index défi
   }
 }
 
-GET accounts <== On vérifie que les données ont bien été copiées
+GET accounts  
 """
 
 st.code(code, language="json")
-st.image("app/coucou.gif")
 Result = """"
 
 

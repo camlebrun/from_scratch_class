@@ -1,6 +1,5 @@
 import streamlit as st
 st.title("Bucket Aggregation")
-st.markdown("<h4>Pas sponso par KFC 🍗</h4>", unsafe_allow_html=True)
 st.write("Dans cette partie nous allons voir comment utiliser les buckets aggregations pour la recherche de données")
 
 code = """
@@ -44,23 +43,23 @@ result = """
       "buckets": [
         {
           "key": 20,
-          "doc_count": 225  <== Le résultat est ici 
+          "doc_count": 225  
         },
         {
           "key": 25,
-          "doc_count": 226  <== Le résultat est ici 
+          "doc_count": 226  
         },
         {
           "key": 30,
-          "doc_count": 259 <== vous avez compris le principe
+          "doc_count": 259 
         },
         {
           "key": 35,
-          "doc_count": 245 <== vous avez compris le principe
+          "doc_count": 245 
         },
         {
           "key": 40,
-          "doc_count": 45 <== vous avez compris le principe
+          "doc_count": 45 
         }
       ]
     }
@@ -106,39 +105,39 @@ result_2 = """
       "buckets": [
         {
           "key": "Xurban",
-          "doc_count": 2 <== vous avez compris le principe
+          "doc_count": 2 
         },
         {
           "key": "Accel",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accidency",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accruex",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accufarm",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accupharm",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accuprint",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Accusage",
-          "doc_count": 1 <== vous avez compris le principe
+          "doc_count": 1 
         },
         {
           "key": "Acium",
-          "doc_count": 1 <== Bref 
+          "doc_count": 1 
         },
         {
           "key": "Aclima",
@@ -207,7 +206,7 @@ result_3 = """
           "key": "1000.0-1500.0",
           "from": 1000,
           "to": 1500,
-          "doc_count": 13 <== vous avez compris le principe
+          "doc_count": 13 
         },
         {
           "key": "1500.0-2000.0",
@@ -243,6 +242,5 @@ result_3 = """
   }
 }"""
 with st.expander("Result"):
-    st.image("app/bo.gif")
     st.code(result_3, language="json")
     

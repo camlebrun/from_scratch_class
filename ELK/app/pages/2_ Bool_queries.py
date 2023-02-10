@@ -31,17 +31,17 @@ Result_1 =  """"
   },
   "hits": {
     "total": {
-      "value": 1, <== Le résultat est ici 
+      "value": 1, 
       "relation": "eq"
     },
     "max_score": null,
     "hits": []
   }
 }
-Logique y'a que 63 habitants dans la ville de Jacksonburg.
+
 """
 with st.expander("Result"):
-    st.image("app/r.gif")
+
     st.metric("Nombre de personnes ayant un compte à Jacksonburg", "1")
     st.markdown("Résultat afficher")
     st.code(Result_1, language="json")
@@ -77,10 +77,10 @@ Result_2  = """
   },
   "hits": {
     "total": {
-      "value": 44,  <== Le résultat est ici 
+      "value": 44, 
       "relation": "eq"
     },
-    "max_score": 1, <== En vrai ça sert à rien les trucs après 
+    "max_score": 1,  
     "hits": [
       {
         "_index": "accounts",
@@ -303,7 +303,7 @@ Result_3 = """
   },
   "hits": {
     "total": {
-      "value": 20, <== Le résultat est ici 
+      "value": 20,
       "relation": "eq"
     },
     "max_score": null,

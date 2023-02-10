@@ -43,7 +43,7 @@ result = """
   },
   "hits": {
     "total": {
-      "value": 476,  <== vous avez compris le principe
+      "value": 476, 
       "relation": "eq"
     },
     "max_score": null,
@@ -106,7 +106,7 @@ result2 = """
           "to": 25,
           "doc_count": 225,
           "avg_balance": {
-            "value": 26969.075555555555  <== vous avez compris le principe
+            "value": 26969.075555555555  
           }
         },
         {
@@ -115,7 +115,7 @@ result2 = """
           "to": 29,
           "doc_count": 149,
           "avg_balance": {
-            "value": 24482.31543624161  <== vous avez compris le principe
+            "value": 24482.31543624161  
           }
         },
         {
@@ -124,7 +124,7 @@ result2 = """
           "to": 40,
           "doc_count": 504,
           "avg_balance": {
-            "value": 24982.29761904762 <== Si tu regarde encore, c'est sympa ;) 
+            "value": 24982.29761904762
           }
         },
         {
@@ -186,6 +186,5 @@ result2 = """
 }
 """
 hello = "app/giphy.gif"
-st.image(hello)
 with st.expander("Show results"):
     st.code(result2, language="json")

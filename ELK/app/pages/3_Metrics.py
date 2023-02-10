@@ -37,8 +37,7 @@ result = """
   },
   "aggregations": {
     "type_count": {
-      "value": 2   <== Le résultat est ici, pas de NaN 
-      ou de personnes non-bianaires je suis tristes :(
+      "value": 2 
     }
   }
 }
@@ -88,8 +87,7 @@ result_2 = """
   },
   "aggregations": {
     "max_age": {
-      "value": 40  <== Le résultat est ici,
-       encore 24 jusqu'à la retraite (oui je troll)
+      "value": 40  
     }
   }
 }"""
@@ -132,8 +130,7 @@ result_3 = """
   },
   "aggregations": {
     "avg_age": {
-      "value": 30.171  <== Le résultat est ici 
-       (j'ai pas fait un arrondi, c'est pas très joli)
+      "value": 30.171 
     }
   }
 }
