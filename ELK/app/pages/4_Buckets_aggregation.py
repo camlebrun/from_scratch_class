@@ -1,7 +1,7 @@
 import streamlit as st
 st.title("Bucket Aggregation")
 st.write("Dans cette partie nous allons voir comment utiliser les buckets aggregations pour la recherche de données")
-st.markdown("<h2>Pas sponso par KFC 🍗</h2>", unsafe_allow_html=True)
+st.markdown("<h4>Pas sponso par KFC 🍗</h4>", unsafe_allow_html=True)
 code = """
 GET accounts/_search
 {
