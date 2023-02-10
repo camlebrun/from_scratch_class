@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("Metrics Queries")
 code = """
-GET account_f/_search 
+GET accounts/_search 
 { "size": 0,
   "aggs": {
     "type_count": {
@@ -37,7 +37,8 @@ result = """
   },
   "aggregations": {
     "type_count": {
-      "value": 2
+      "value": 2   <== Le résultat est ici, pas de NaN 
+      ou de personnes non-bianaires je suis tristes :(
     }
   }
 }
@@ -86,8 +87,9 @@ result_2 = """
     "hits": []
   },
   "aggregations": {
-    "avg_age": {
-      "value": 40
+    "max_age": {
+      "value": 40  <== Le résultat est ici,
+       encore 24 jusqu'à la retraite (oui je troll)
     }
   }
 }"""
@@ -130,7 +132,8 @@ result_3 = """
   },
   "aggregations": {
     "avg_age": {
-      "value": 30.171
+      "value": 30.171  <== Le résultat est ici 
+       (j'ai pas fait un arrondi, c'est pas très joli)
     }
   }
 }

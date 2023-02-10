@@ -18,7 +18,7 @@ GET accounts/_search
         },
         {
           "term": {
-            "gender": "F"
+            "gender": "f"
           }
         }
       ]
@@ -31,8 +31,9 @@ GET accounts/_search
 st.code(code, language="json")
 
 result = """
+
 {
-  "took": 6,
+  "took": 2,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -42,33 +43,11 @@ result = """
   },
   "hits": {
     "total": {
-      "value": 2000,
+      "value": 476,  <== vous avez compris le principe
       "relation": "eq"
     },
     "max_score": null,
     "hits": []
-  },
-  "aggregations": {
-    "balance_range": {
-      "buckets": [
-        {
-          "key": "*-100.0",
-          "to": 100,
-          "doc_count": 0
-        },
-        {
-          "key": "100.0-200.0",
-          "from": 100,
-          "to": 200,
-          "doc_count": 0
-        },
-        {
-          "key": "20000.0-*",
-          "from": 20000,
-          "doc_count": 619
-        }
-      ]
-    }
   }
 }
 """
@@ -110,163 +89,6 @@ st.code(code2, language="json")
 
 result2 = """
 {
-  "took": 2,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 2000,
-      "relation": "eq"
-    },
-    "max_score": 1,
-    "hits": [
-      {
-        "_index": "accounts",
-        "_id": "7vmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "index": {
-            "_id": "1"
-          }
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "7_mPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "account_number": 1,
-          "balance": 39225,
-          "firstname": "Amber",
-          "lastname": "Duke",
-          "age": 32,
-          "gender": "M",
-          "address": "880 Holmes Lane",
-          "employer": "Pyrami",
-          "email": "amberduke@pyrami.com",
-          "city": "Brogan",
-          "state": "IL"
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "8PmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "index": {
-            "_id": "6"
-          }
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "8fmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "account_number": 6,
-          "balance": 5686,
-          "firstname": "Hattie",
-          "lastname": "Bond",
-          "age": 36,
-          "gender": "M",
-          "address": "671 Bristol Street",
-          "employer": "Netagy",
-          "email": "hattiebond@netagy.com",
-          "city": "Dante",
-          "state": "TN"
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "8vmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "index": {
-            "_id": "13"
-          }
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "8_mPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "account_number": 13,
-          "balance": 32838,
-          "firstname": "Nanette",
-          "lastname": "Bates",
-          "age": 28,
-          "gender": "F",
-          "address": "789 Madison Street",
-          "employer": "Quility",
-          "email": "nanettebates@quility.com",
-          "city": "Nogal",
-          "state": "VA"
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "9PmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "index": {
-            "_id": "18"
-          }
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "9fmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "account_number": 18,
-          "balance": 4180,
-          "firstname": "Dale",
-          "lastname": "Adams",
-          "age": 33,
-          "gender": "M",
-          "address": "467 Hutchinson Court",
-          "employer": "Boink",
-          "email": "daleadams@boink.com",
-          "city": "Orick",
-          "state": "MD"
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "9vmPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "index": {
-            "_id": "20"
-          }
-        }
-      },
-      {
-        "_index": "accounts",
-        "_id": "9_mPOoYB2N4qgR1tODpY",
-        "_score": 1,
-        "_source": {
-          "account_number": 20,
-          "balance": 16418,
-          "firstname": "Elinor",
-          "lastname": "Ratliff",
-          "age": 36,
-          "gender": "M",
-          "address": "282 Kings Place",
-          "employer": "Scentric",
-          "email": "elinorratliff@scentric.com",
-          "city": "Ribera",
-          "state": "WA"
-        }
-      }
-    ]
-  },
   "aggregations": {
     "age_ranges": {
       "buckets": [
@@ -284,7 +106,7 @@ result2 = """
           "to": 25,
           "doc_count": 225,
           "avg_balance": {
-            "value": 26969.075555555555
+            "value": 26969.075555555555  <== vous avez compris le principe
           }
         },
         {
@@ -293,7 +115,7 @@ result2 = """
           "to": 29,
           "doc_count": 149,
           "avg_balance": {
-            "value": 24482.31543624161
+            "value": 24482.31543624161  <== vous avez compris le principe
           }
         },
         {
@@ -302,7 +124,7 @@ result2 = """
           "to": 40,
           "doc_count": 504,
           "avg_balance": {
-            "value": 24982.29761904762
+            "value": 24982.29761904762 <== Si tu regarde encore, c'est sympa ;) 
           }
         },
         {
@@ -363,6 +185,7 @@ result2 = """
   }
 }
 """
-st.warning("Bon week-end !")
+hello = "app/giphy.gif"
+st.image(hello)
 with st.expander("Show results"):
     st.code(result2, language="json")

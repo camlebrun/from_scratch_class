@@ -1,7 +1,8 @@
 import streamlit as st
 st.title("Bucket Aggregation")
-st.write("Dans cette partie nous allons voir comment utiliser les buckets aggregations pour la recherche de données")
 st.markdown("<h4>Pas sponso par KFC 🍗</h4>", unsafe_allow_html=True)
+st.write("Dans cette partie nous allons voir comment utiliser les buckets aggregations pour la recherche de données")
+
 code = """
 GET accounts/_search
 {
@@ -43,23 +44,23 @@ result = """
       "buckets": [
         {
           "key": 20,
-          "doc_count": 225
+          "doc_count": 225  <== Le résultat est ici 
         },
         {
           "key": 25,
-          "doc_count": 226
+          "doc_count": 226  <== Le résultat est ici 
         },
         {
           "key": 30,
-          "doc_count": 259
+          "doc_count": 259 <== vous avez compris le principe
         },
         {
           "key": 35,
-          "doc_count": 245
+          "doc_count": 245 <== vous avez compris le principe
         },
         {
           "key": 40,
-          "doc_count": 45
+          "doc_count": 45 <== vous avez compris le principe
         }
       ]
     }
@@ -68,7 +69,7 @@ result = """
 """
 with st.expander("Result"):
   st.code(result, language="json")
-  st.write("**Requête 2: Affiche les employeurs des comptes**")
+st.write("**Requête 2: Affiche les employeurs**")
 
 code_2 = """"
 GET accounts/_search
@@ -105,43 +106,43 @@ result_2 = """
       "buckets": [
         {
           "key": "Xurban",
-          "doc_count": 2
+          "doc_count": 2 <== vous avez compris le principe
         },
         {
           "key": "Accel",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accidency",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accruex",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accufarm",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accupharm",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accuprint",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Accusage",
-          "doc_count": 1
+          "doc_count": 1 <== vous avez compris le principe
         },
         {
           "key": "Acium",
-          "doc_count": 1
+          "doc_count": 1 <== Bref 
         },
         {
           "key": "Aclima",
-          "doc_count": 1
+          "doc_count": 1 
         }
       ]
     }
@@ -151,7 +152,7 @@ st.code(code_2, language="json")
 with st.expander("Result"):
     st.code(result_2, language="json")
 
-st.write("**Requête 3: Affiche les comptes par tranche de 100**")
+st.write("**Requête 3: Affiche les soldes entre 1000 et 3500 avec un pas de 500*")
 code_3 = """
 GET accounts/_search
 { "size" : 0,
@@ -160,20 +161,25 @@ GET accounts/_search
       "range": {
         "field": "balance",
         "ranges": [
-          { "to": 100.0 },
-          { "from": 100.0, "to": 200.0 },
-          { "from": 20000.0 }
+          { "to": 1000.0 },
+          { "from": 1000.0, "to": 1500.0 },
+          { "from": 1500.0, "to": 2000.0 },
+          { "from": 2000.0, "to": 2500.0 },
+          { "from": 2500.0, "to": 3000.0 },
+          { "from": 3000.0, "to": 3500.0 },
+          { "from": 3500.0 } 
         ]
       }
     }
   }
 }
 
+
 """
 st.code(code_3, language="json")
 result_3 = """
 {
-  "took": 6,
+  "took": 1,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -193,25 +199,50 @@ result_3 = """
     "balance_range": {
       "buckets": [
         {
-          "key": "*-100.0",
-          "to": 100,
+          "key": "*-1000.0",
+          "to": 1000,
           "doc_count": 0
         },
         {
-          "key": "100.0-200.0",
-          "from": 100,
-          "to": 200,
-          "doc_count": 0
+          "key": "1000.0-1500.0",
+          "from": 1000,
+          "to": 1500,
+          "doc_count": 13 <== vous avez compris le principe
         },
         {
-          "key": "20000.0-*",
-          "from": 20000,
-          "doc_count": 619
+          "key": "1500.0-2000.0",
+          "from": 1500,
+          "to": 2000,
+          "doc_count": 6
+        },
+        {
+          "key": "2000.0-2500.0",
+          "from": 2000,
+          "to": 2500,
+          "doc_count": 6
+        },
+        {
+          "key": "2500.0-3000.0",
+          "from": 2500,
+          "to": 3000,
+          "doc_count": 7
+        },
+        {
+          "key": "3000.0-3500.0",
+          "from": 3000,
+          "to": 3500,
+          "doc_count": 16
+        },
+        {
+          "key": "3500.0-*",
+          "from": 3500,
+          "doc_count": 952
         }
       ]
     }
   }
 }"""
 with st.expander("Result"):
+    st.image("app/bo.gif")
     st.code(result_3, language="json")
     

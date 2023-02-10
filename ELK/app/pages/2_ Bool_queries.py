@@ -3,7 +3,7 @@ import streamlit as st
 
 st.title("Bool Queries")
 code = """
-GET account/_search
+GET accounts/_search
 {"size": 0,
   "query": {
     "match": {
@@ -31,7 +31,7 @@ Result_1 =  """"
   },
   "hits": {
     "total": {
-      "value": 1,
+      "value": 1, <== Le résultat est ici 
       "relation": "eq"
     },
     "max_score": null,
@@ -41,6 +41,7 @@ Result_1 =  """"
 Logique y'a que 63 habitants dans la ville de Jacksonburg.
 """
 with st.expander("Result"):
+    st.image("app/r.gif")
     st.metric("Nombre de personnes ayant un compte à Jacksonburg", "1")
     st.markdown("Résultat afficher")
     st.code(Result_1, language="json")
@@ -76,10 +77,10 @@ Result_2  = """
   },
   "hits": {
     "total": {
-      "value": 44,
+      "value": 44,  <== Le résultat est ici 
       "relation": "eq"
     },
-    "max_score": 1,
+    "max_score": 1, <== En vrai ça sert à rien les trucs après 
     "hits": [
       {
         "_index": "accounts",
@@ -268,7 +269,7 @@ Result_2  = """
 """
 with st.expander("Result"):
     st.markdown("Résultat afficher")
-    st.metric("Nombre de personnes ayant 20 ans", "20")
+    st.metric("Nombre de personnes ayant 20 ans", "44")
     st.code(Result_2, language="json")
 st.write("")
 
@@ -288,7 +289,7 @@ GET accounts/_search
   }
 }
 """
-st.write("**Requête 3 : Affiche les comptes qui ont le state = NY*")
+st.write("**Requête 3 : Affiche les comptes qui ont le state = NY**")
 st.code(code_3, language="json")
 Result_3 = """
 {
@@ -302,7 +303,7 @@ Result_3 = """
   },
   "hits": {
     "total": {
-      "value": 20,
+      "value": 20, <== Le résultat est ici 
       "relation": "eq"
     },
     "max_score": null,
@@ -313,5 +314,5 @@ Result_3 = """
 
 with st.expander("Result"):
     st.markdown("Résultat afficher")
-    st.metric("Nombre de personne dans l'Etat de Newyork", "20")
+    st.metric("Nombre de personne dans l'Etat de New York", "20")
     st.code(Result_3, language="json")

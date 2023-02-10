@@ -5,9 +5,10 @@ st.write("Dans cette partie nous allons voir comment indexé des données dans E
 st.write("Création d'un index et modification de l'index")
 st.write("L'index créee par ELK n'est pas adapter pour notre projet, il faut donc le modifier")
 st.write("**On va créer un index temporaire pour y injecter des données puis on va créer un index définitif avec les bon mapping. Qui servira à la suite du projet**")
-code = """GET account_temp
+code = """
+GET account_temp <== Voir l'index fourni par ELK
 
-PUT  account_temp
+PUT  account_temp <== Création d'un index temporaire
 {
   "mappings": {
     "properties": {
@@ -24,19 +25,20 @@ PUT  account_temp
   }
 }
 
-POST _reindex
+POST _reindex <== On copie les données de l'index temporaire vers l'index définitif
 {
   "source": {
     "index": "account_temp"
 }, "dest": {
-    "index": "account"
+    "index": "accounts"
   }
 }
 
-GET accounts
+GET accounts <== On vérifie que les données ont bien été copiées
 """
 
 st.code(code, language="json")
+st.image("app/coucou.gif")
 Result = """"
 
 
@@ -120,5 +122,5 @@ Result = """"
 """
 
 with st.expander("Result"):
-    st.markdown("This is an explanation of the code")
+    st.markdown("It's working !")
     st.code(Result, language="json")
