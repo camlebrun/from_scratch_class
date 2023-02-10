@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("Combined aggregations")
 st.write("Dans cette partie nous allons voir comment faire des aggregations combinées")
-st.write("Requête 1: Combien de femmes ont plus de 20 ans ?")
+st.write("**Requête 1: Combien de femmes ont plus de 20 ans ?**")
 code = """
 GET accounts/_search
 { "size" : 0,
@@ -74,7 +74,7 @@ result = """
 """
 with st.expander("Result"):
     st.code(result, language="json")
-st.write("Requête 2: Affiche les balances moyennes des comptes par tranche d'âge de 10 ans")
+st.write("**Requête 2: Affiche les soldes moyens des comptes par tranche d'âge de 10 ans**")
 code2= """
 GET accounts/_search
 {
@@ -363,5 +363,6 @@ result2 = """
   }
 }
 """
+st.warning("Bon week-end !")
 with st.expander("Show results"):
     st.code(result2, language="json")

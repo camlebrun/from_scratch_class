@@ -1,8 +1,7 @@
 import streamlit as st
 
 
-st.title("Question 2")
-
+st.title("Bool Queries")
 code = """
 GET account/_search
 {"size": 0,
@@ -17,7 +16,7 @@ GET account/_search
 }
 
 """
-st.write("Requête 1 : Affiche les comptes qui ont comme ville Jacksonburg")
+st.write("**Requête 1 : Affiche les comptes qui ont comme ville Jacksonburg**")
 st.code(code, language="json")
 Result_1 =  """"
 
@@ -39,11 +38,13 @@ Result_1 =  """"
     "hits": []
   }
 }
+Logique y'a que 63 habitants dans la ville de Jacksonburg.
 """
 with st.expander("Result"):
+    st.metric("Nombre de personnes ayant un compte à Jacksonburg", "1")
     st.markdown("Résultat afficher")
     st.code(Result_1, language="json")
-st.write("Requête 2 : Affiche les comptes qui ont 20 ans")
+st.write("**Requête 2 : Affiche les comptes qui ont 20 ans**")
 
 code_2 = """
 GET accounts/_search
@@ -267,6 +268,7 @@ Result_2  = """
 """
 with st.expander("Result"):
     st.markdown("Résultat afficher")
+    st.metric("Nombre de personnes ayant 20 ans", "20")
     st.code(Result_2, language="json")
 st.write("")
 
@@ -286,7 +288,7 @@ GET accounts/_search
   }
 }
 """
-st.write("Requête 3 : Affiche les documents qui ont le state NY")
+st.write("**Requête 3 : Affiche les comptes qui ont le state = NY*")
 st.code(code_3, language="json")
 Result_3 = """
 {
@@ -311,4 +313,5 @@ Result_3 = """
 
 with st.expander("Result"):
     st.markdown("Résultat afficher")
+    st.metric("Nombre de personne dans l'Etat de Newyork", "20")
     st.code(Result_3, language="json")

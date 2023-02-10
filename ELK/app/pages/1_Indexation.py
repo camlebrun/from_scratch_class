@@ -1,6 +1,10 @@
 import streamlit as st
 st.title("Indexation")
+
 st.write("Dans cette partie nous allons voir comment indexé des données dans Elasticsearch")
+st.write("Création d'un index et modification de l'index")
+st.write("L'index créee par ELK n'est pas adapter pour notre projet, il faut donc le modifier")
+st.write("**On va créer un index temporaire pour y injecter des données puis on va créer un index définitif avec les bon mapping. Qui servira à la suite du projet**")
 code = """GET account_temp
 
 PUT  account_temp

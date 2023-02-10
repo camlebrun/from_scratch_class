@@ -1,5 +1,7 @@
 import streamlit as st
-st.title("Question 3")
+st.title("Bucket Aggregation")
+st.write("Dans cette partie nous allons voir comment utiliser les buckets aggregations pour la recherche de données")
+st.markdown("<h2>Pas sponso par KFC 🍗</h2>", unsafe_allow_html=True)
 code = """
 GET accounts/_search
 {
@@ -15,7 +17,7 @@ GET accounts/_search
 }
 """
 
-st.write("Requête 1: Affiche les ages des comptes par tranche de 5 ans")
+st.write("**Requête 1: Affiche les ages des comptes par tranche de 5 ans**")
 st.code(code, language="json")
 
 result = """
@@ -65,8 +67,8 @@ result = """
 }
 """
 with st.expander("Result"):
-    st.code(result, language="json")
-st.write("Requête 2: Affiche les employeurs des comptes")
+  st.code(result, language="json")
+  st.write("**Requête 2: Affiche les employeurs des comptes**")
 
 code_2 = """"
 GET accounts/_search
@@ -148,7 +150,8 @@ result_2 = """
 st.code(code_2, language="json")
 with st.expander("Result"):
     st.code(result_2, language="json")
-st.write("Requête 3: Affiche les balances des comptes par tranche de 100")
+
+st.write("**Requête 3: Affiche les comptes par tranche de 100**")
 code_3 = """
 GET accounts/_search
 { "size" : 0,

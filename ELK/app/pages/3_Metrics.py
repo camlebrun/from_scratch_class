@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Bool Queries")
+st.title("Metrics Queries")
 code = """
 GET account_f/_search 
 { "size": 0,
@@ -12,7 +12,9 @@ GET account_f/_search
     }
     }
 """
-st.write("Requête 1: Combien de type de genre différents y a-t-il dans la base de données ?")
+st.write("**Requête 1: Combien de type de genre différents y a-t-il dans la base de données ?**")
+st.write("La requête ci-dessous permet de compter le nombre de type de genre différents dans la base de données")
+st.write("Y'a t'il des personnes dont leurs genres ne sont pas renseignés ? Notre base de données est elle inclusive ?")
 st.code(code, language="json")
 
 result = """
@@ -43,6 +45,7 @@ result = """
 """
 
 with st.expander("Result"):
+    st.metric("Nombre de type de genre différents", "2")
     st.markdown("Résultat afficher")
     st.code(result, language="json")
 
@@ -61,7 +64,7 @@ GET accounts/_search
 
 
 """
-st.write("Requête 2: Quel est l'âge maximum des comptes ?")
+st.write("**Requête 2: Quel est l'âge maximum des comptes ?**")
 st.code(code_2, language="json")
 
 result_2 = """
@@ -90,8 +93,9 @@ result_2 = """
 }"""
 with st.expander("Result"):
     st.markdown("Résultat afficher")
+    st.metric("L'âge maximum des comptes", "40")
     st.code(result_2, language="json")
-st.write("Requête 3: Quel est l'âge moyen des comptes ?")
+st.write("**Requête 3: Quel est l'âge moyen des comptes ?**")
 code_3 = """
 GET accounts/_search 
 { 
@@ -107,19 +111,32 @@ GET accounts/_search
 """
 
 result_3 = """
-GET accounts/_search 
-{ 
-  "size": 0, 
-  "aggs": {
+{
+  "took": 18,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 2000,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": []
+  },
+  "aggregations": {
     "avg_age": {
-      "avg": {
-        "field": "age"
-      }
+      "value": 30.171
     }
   }
 }
 """
 st.code(code_3, language="json")
 with st.expander("Result"):
+    st.metric("L'âge moyen des comptes", "30 ans ")
     st.markdown("Résultat afficher")
     st.code(result_3, language="json")
